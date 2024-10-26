@@ -191,7 +191,17 @@ module.exports = async function (databaseType, threadModel, api, fakeGraphql) {
 						message: `The first argument (threadID) must be a number, not a ${typeof threadID}`
 					});
 				}
+
 				threadInfo = threadInfo || await api.getThreadInfo(threadID);
+
+				// Add check for null or undefined threadInfo
+				if (isNaN(threadID) || threadID == 0) {
+						throw new CustomError({
+								name: "INVALID_THREAD_ID",
+								message: `The threadID must be a valid number, not ${threadID}`
+						});
+				}
+
 				const { threadName, userInfo, adminIDs } = threadInfo;
 				const newAdminsIDs = adminIDs.reduce(function (_, b) {
 					_.push(b.id);

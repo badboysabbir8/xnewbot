@@ -20,16 +20,31 @@ module.exports = {
 	onStart: async function ({ api, event }) {
 		try {
 			const groupList = await api.getThreadList(10, null, ['INBOX']);
-
-			const filteredList = groupList.filter(group => group.threadName !== null);
+			// Filter out invalid groups with threadID 0
+			const filteredList = groupList.filter(group => group.threadName && group.threadID && group.threadID !== 0);
 
 			if (filteredList.length === 0) {
 				api.sendMessage('No group chats found.', event.threadID);
 			} else {
-				const formattedList = filteredList.map((group, index) =>
-					`│${index + 1}. ${group.threadName}\n│𝐓𝐈𝐃: ${group.threadID}`
-				);
-				const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${formattedList.map(line => `${line}`).join("\n")}\n╰───────────ꔪ`;
+				const formattedList = await Promise.all(filteredList.map(async (group, index) => {
+					try {
+						const threadInfo = await api.getThreadInfo(group.threadID);
+						const adminInfoList = await Promise.all(
+							threadInfo.adminIDs.map(async (admin) => {
+								const userInfo = await api.getUserInfo(admin.id);
+								const adminName = userInfo[admin.id]?.name || "Unknown";
+								return `${adminName} (ID: ${admin.id})`;
+							})
+						);
+
+						return `│${index + 1}. ${group.threadName}\n│𝐓𝐈𝐃: ${group.threadID}\n│𝐀𝐝𝐦𝐢𝐧𝐬: ${adminInfoList.join(", ")}`;
+					} catch (err) {
+						console.warn(`Could not fetch info for group: ${group.threadName}, ID: ${group.threadID}`);
+						return `│${index + 1}. ${group.threadName}\n│𝐓𝐈𝐃: ${group.threadID}\n│𝐀𝐝𝐦𝐢𝐧𝐬: Unavailable`;
+					}
+				}));
+
+				const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${formattedList.join("\n")}\n╰───────────ꔪ`;
 
 				const sentMessage = await api.sendMessage(message, event.threadID);
 				global.GoatBot.onReply.set(sentMessage.messageID, {
@@ -40,6 +55,7 @@ module.exports = {
 			}
 		} catch (error) {
 			console.error("Error listing group chats", error);
+			api.sendMessage('An error occurred while listing group chats. Please try again later.', event.threadID);
 		}
 	},
 
@@ -59,7 +75,7 @@ module.exports = {
 
 		try {
 			const groupList = await api.getThreadList(10, null, ['INBOX']);
-			const filteredList = groupList.filter(group => group.threadName !== null);
+			const filteredList = groupList.filter(group => group.threadName && group.threadID && group.threadID !== 0);
 
 			if (groupIndex > filteredList.length) {
 				api.sendMessage('Invalid group number.\nPlease choose a number within the range.', event.threadID, event.messageID);
