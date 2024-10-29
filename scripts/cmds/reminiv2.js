@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 
 module.exports = {
   config: {
-    name: "remini2",
+    name: "4k2",
     aliases: [],
     author: "Hazeyy/kira", // hindi ito collab, ako kasi nag convert :>
     version: "69",
@@ -37,7 +37,7 @@ module.exports = {
 
     api.sendMessage("🕟 | 𝖤𝗇𝗁𝖺𝗇𝖼𝗂𝗇𝗀, 𝗉𝗅𝖾𝖺𝗌𝖾 𝗐𝖺𝗂𝗍 𝖿𝗈𝗋 𝖺 𝗆𝗈𝗆𝖾𝗇𝗍...", threadID, async () => {
       try {
-        const response = await axios.get(`https://hazeyy-apis-combine.kyrinwu.repl.co/api/try/remini?url=${encodeURIComponent(photoUrl)}`);
+        const response = await axios.get(`https://10449f95-9401-433e-90fa-f8541f427c1a-00-igg4d2kcizz9.pike.replit.dev/remini?imageUrl=${encodeURIComponent(photoUrl)}&method=enhance`);
         const processedImageURL = response.data.image_data;
         const img = (await axios.get(processedImageURL, { responseType: "arraybuffer" })).data;
 
