@@ -57,7 +57,7 @@
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1761772386,
+    "expirationDate": 1761904620,
     "hostOnly": false,
     "httpOnly": false,
     "name": "fbl_st",
@@ -66,7 +66,7 @@
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "100625381%3BT%3A28837273",
+    "value": "101638110%3BT%3A28839477",
     "id": 5
 },
 {
@@ -141,20 +141,7 @@
 },
 {
     "domain": ".facebook.com",
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "usida",
-    "path": "/",
-    "sameSite": "no_restriction",
-    "secure": true,
-    "session": true,
-    "storeId": "0",
-    "value": "eyJ2ZXIiOjEsImlkIjoiQXNtN3NpODFjYnpycDAiLCJ0aW1lIjoxNzMwMzY4MDE2fQ%3D%3D",
-    "id": 11
-},
-{
-    "domain": ".facebook.com",
-    "expirationDate": 1735420386,
+    "expirationDate": 1735552620,
     "hostOnly": false,
     "httpOnly": false,
     "name": "vpd",
@@ -164,11 +151,11 @@
     "session": false,
     "storeId": "0",
     "value": "v1%3B857x437x2.1042816638946533",
-    "id": 12
+    "id": 11
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1730972821,
+    "expirationDate": 1730972860,
     "hostOnly": false,
     "httpOnly": false,
     "name": "wd",
@@ -177,12 +164,12 @@
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "467x917",
-    "id": 13
+    "value": "924x1812",
+    "id": 12
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1738012385,
+    "expirationDate": 1738144621,
     "hostOnly": false,
     "httpOnly": false,
     "name": "wl_cbv",
@@ -191,8 +178,8 @@
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "v2%3Bclient_version%3A2656%3Btimestamp%3A1730236386",
-    "id": 14
+    "value": "v2%3Bclient_version%3A2658%3Btimestamp%3A1730368619",
+    "id": 13
 },
 {
     "domain": ".facebook.com",
@@ -206,6 +193,6 @@
     "session": false,
     "storeId": "0",
     "value": "39%3ALg5efTMyWye6wQ%3A2%3A1729966315%3A-1%3A399%3A6bqKrlIMl5LMNw%3AAcVFWxdrV5GtcfrLBiLgZ6WleKhc3uk6IZ55rrZ1eA",
-    "id": 15
+    "id": 14
 }
 ]
