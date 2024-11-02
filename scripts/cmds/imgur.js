@@ -1,10 +1,11 @@
-let axios = require("axios"); 
+const axios = require("axios"); 
+const TinyURL = require('tinyurl');
 module.exports = {
   config: {
     name: "imgur",
-    aliases: [`imagegur`],
+    aliases: [`ig`],
     version: "1.0",
-    author: "otiney",
+    author: "xnil",
     countDown: 0,
     role: 0,
     shortDescription: "upload any images in imgur server..",
@@ -14,10 +15,14 @@ module.exports = {
   },
 
   onStart: async function ({ api, event }) {
-    let linkanh = event.messageReply.attachments[0].url || args.join(" ");
-    if(!linkanh) return api.sendMessage('Please reply or enter the link 1 image!!!', event.threadID, event.messageID)
-    let res = await axios.get(`https://API-Web.miraiofficials123.repl.co/imgur?link=${encodeURIComponent(linkanh)}&apikey=18102004`);
-    let img = res.data.data;
-  return api.sendMessage(`${img}`, event.threadID, event.messageID)
+    const xnil = event.messageReply.attachments[0].url || args.join(" ");
+    
+    if(!xnil) return api.sendMessage('Please reply or enter the link 1 image!!!', event.threadID, event.messageID)
+    
+    const shortenedUrl = await TinyURL.shorten(xnil);
+    const response = await axios.get(`https://xnilnew404.onrender.com/xnil/imgur?url=${shortenedUrl}`);
+const x = response.data.uploaded.image;
+    
+  return api.sendMessage(`${x}`, event.threadID, event.messageID)
   }
 };
