@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
 	config: {
 		name: "gpt4",
-		author: "cliff",
+		author: "xnil",
 		version: "1.5",
 		countDown: 5,
 		role: 0,
@@ -27,12 +27,12 @@ module.exports = {
 				return api.sendMessage('Please provide a prompt to generate a text response.GPT4 {questions}\nExample: GPT4 What is the meaning of life?\n', event.threadID, messageID);
 			}
 
-			const gpt4_api = `https://ai-chat-gpt-4-lite.onrender.com/api/hercai?question=${encodeURIComponent(prompt)}`;
+			const xnil_gpt4 = `https://xnilnew404.onrender.com/xnil/gpt4?ask=${encodeURIComponent(prompt)}`;
 
-			const response = await axios.get(gpt4_api);
+			const response = await axios.get(xnil_gpt4);
 
-			if (response.data && response.data.reply) {
-				const generatedText = response.data.reply;
+			if (response.data && response.data.content) {
+				const generatedText = response.data.content;
 				api.sendMessage({ body: generatedText, attachment: null }, event.threadID, messageID);
 			} else {
 				console.error('API response did not contain expected data:', response.data);
