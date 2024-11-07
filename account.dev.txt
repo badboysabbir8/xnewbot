@@ -1,6 +1,6 @@
 [
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1762072050.27476,
     "hostOnly": false,
     "httpOnly": false,
@@ -14,7 +14,7 @@
     "id": 1
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1765258118.248152,
     "hostOnly": false,
     "httpOnly": true,
@@ -28,7 +28,7 @@
     "id": 2
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1762236107,
     "hostOnly": false,
     "httpOnly": false,
@@ -56,7 +56,7 @@
     "id": 4
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1731051734.344571,
     "hostOnly": false,
     "httpOnly": false,
@@ -70,7 +70,7 @@
     "id": 5
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1732907213.242,
     "hostOnly": false,
     "httpOnly": false,
@@ -98,7 +98,7 @@
     "id": 7
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1765096050.27533,
     "hostOnly": false,
     "httpOnly": true,
@@ -112,7 +112,7 @@
     "id": 8
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1735884107,
     "hostOnly": false,
     "httpOnly": false,
@@ -126,7 +126,7 @@
     "id": 9
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1738476106,
     "hostOnly": false,
     "httpOnly": false,
@@ -140,7 +140,7 @@
     "id": 10
 },
 {
-    "domain": ".facebook.com",
+    "domain": "mbasic.facebook.com",
     "expirationDate": 1762072050.27543,
     "hostOnly": false,
     "httpOnly": true,
