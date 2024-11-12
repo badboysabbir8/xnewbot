@@ -3,7 +3,7 @@ module.exports = {
     name: "profile",
     aliases: ["pfp"],
     version: "1.1",
-    author: "NIB",
+    author: "xnil",
     countDown: 5,
     role: 0,
     shortDescription: "PROFILE image",
@@ -16,27 +16,31 @@ module.exports = {
 
   langs: {
     vi: {
-      noTag: "Bạn phải tag người bạn muốn tát"
+      noTag: "Bạn phải tag người bạn muốn lấy ảnh đại diện"
     },
     en: {
-      noTag: "You must tag the person you want to get profile picture of"
+      noTag: "You must tag the person you want to get the profile picture of"
     }
   },
 
   onStart: async function ({ event, message, usersData, args, getLang }) {
-    let avt;
+    let avatarUrl;
     const uid1 = event.senderID;
+    const uid3 = args[0];  // If a direct ID is provided in the arguments
     const uid2 = Object.keys(event.mentions)[0];
-    if(event.type == "message_reply"){
-      avt = await usersData.getAvatarUrl(event.messageReply.senderID)
-    } else{
-      if (!uid2){avt =  await usersData.getAvatarUrl(uid1)
-              } else{avt = await usersData.getAvatarUrl(uid2)}}
 
-
+    if (event.type === "message_reply") {
+      avatarUrl = await usersData.getAvatarUrl(event.messageReply.senderID);
+    } else if (uid2) {
+      avatarUrl = await usersData.getAvatarUrl(uid2);
+    } else if (uid3) {
+      avatarUrl = await usersData.getAvatarUrl(uid3);
+    } else {
+      avatarUrl = await usersData.getAvatarUrl(uid1);
+    }
     message.reply({
-      body:"",
-      attachment: await global.utils.getStreamFromURL(avt)
-  })
+      body: "🌟Profile pic💫",
+      attachment: await global.utils.getStreamFromURL(avatarUrl)
+    });
   }
 };
