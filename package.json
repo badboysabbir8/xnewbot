@@ -44,7 +44,6 @@
 		"node-superfetch": "^0.3.4",
 		"nodemailer": "^6.7.5",
 		"npmlog": "^7.0.1",
-		"nayan-media-downloader": "^0.0.1-security",
 		"ora": "^5.4.1",
 		"passport": "^0.6.0",
 		"passport-local": "^1.0.0",
